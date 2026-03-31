@@ -2,36 +2,39 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class Cliente {
     private static final int IDADE_MINIMA = 16;
     private static final int ANO_MINIMO = 1900;
-    private String nome;
-    private String senha;
+    public String Nome;
+    private String Senha;
     private double saldo;
-    private String cpf;
+    private String Cpf;
     private boolean bloqueada;
     private int tentativasFalhas;
     private String numConta;
-    private LocalDate dataNascimento;
-    private DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private  LocalDate dataNascimento;
+    private static final DateTimeFormatter formatador = DateTimeFormatter
+    .ofPattern("dd/MM/uuuu")
+    .withResolverStyle(ResolverStyle.STRICT);
 
     // Getters
 
-    public String getnome() {
-        return nome;
+    public String getNome() {
+        return Nome;
     }
 
-    public String getsenha() {
-        return senha;
+    public String getSenha() {
+        return Senha;
     }
 
-    public double getsaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public String getcpf() {
-        return cpf;
+    public String getCpf() {
+        return Cpf;
     }
 
     public boolean isBloqueada() {
@@ -57,7 +60,7 @@ public class Cliente {
             return false;
 
         }
-        this.nome = nome.trim();
+        this.Nome = nome.trim();
         return true;
     }
 
@@ -99,7 +102,7 @@ public class Cliente {
             return false;
             
         
-        this.cpf = cpfLimpo;
+        this.Cpf = cpfLimpo;
         return true;
     }
     

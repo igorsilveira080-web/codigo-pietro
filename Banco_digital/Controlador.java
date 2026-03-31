@@ -5,28 +5,36 @@ public class Controlador {
         Cliente cliente = new Cliente();
 
         // Nome
-        String nome = Telas.lerTexto("Nome completo");
-        if (!cliente.setNome(nome)) {
-            Telas.mensagem("Nome inválido. Informe nome e sobrenome.", true);
-            return;
-        }
+        String nomeInformado;
+        do {
+            nomeInformado = Telas.lerTexto("Digite o nome completo: ");
+            if (!cliente.setNome(nomeInformado)) {
+                Telas.mensagem("Nome inválido!", true);
+            }
+        } while (!cliente.getNome().equals(nomeInformado.trim()));
 
         // CPF
-        String cpf = Telas.lerTexto("CPF (somente números ou com pontuação)");
-        if (!cliente.setCpf(cpf)) {
-            Telas.mensagem("CPF inválido.", true);
-            return;
-        }
+        String cpfInformado;
+        do {
+            Telas.limparTela();
+            cpfInformado = Telas.lerTexto("Digite o CPF: ");
+            if (!cliente.setCpf(cpfInformado)) {
+                Telas.mensagem("CPF inválido!", true);
+            }
+        } while (!cliente.setCpf(cpfInformado));    
 
-        // Data de Nascimento
-        String data = Telas.lerTexto("Data de nascimento (dd/mm/aaaa)");
-        if (!cliente.setDataNascimento(data)) {
-            Telas.mensagem("Data de nascimento inválida. Use o formato dd/mm/aaaa.", true);
-            return;
-        }
+        // Data do elemento nascido
+        String dataNascimento;
+        do {
+            Telas.limparTela();
+            dataNascimento = Telas.lerTexto("Digite a data de nascimento (dd/mm/aaaa): ");
+            if (!cliente.setDataNascimento(dataNascimento)) {
+                Telas.mensagem("Data de nascimento inválida.", true);
+            }
+        } while (!cliente.setDataNascimento(dataNascimento));
 
         // Senha
-        String senha    = Telas.lerTexto("Crie sua senha (4 dígitos)");
+        String senha = Telas.lerTexto("Crie sua senha (4 dígitos)");
         String confirma = Telas.lerTexto("Confirme sua senha");
 
         if (!senha.equals(confirma)) {
@@ -40,26 +48,21 @@ public class Controlador {
         }
 
         Telas.mensagem(
-            "Dados validados com sucesso!\n" +
-            "Nome : " + cliente.getNome() + "\n" +
-            "CPF  : " + ValidaCPF.imprimeCPF(cliente.getCpf()) + "\n" +
-            "Nasc.: " + cliente.getDataNascimento() + "\n\n" +
-            "(Envio à CentralBancaria será implementado na Aula 06)"
-        , false);
+                "Dados validados com sucesso!\n" +
+                        "Nome : " + cliente.getNome() + "\n" +
+                        "CPF  : " + ValidaCPF.imprimeCPF(cliente.getCpf()) + "\n" +
+                        "Nasc.: " + cliente.getDataNascimento() + "\n\n" +
+                        "(Envio à CentralBancaria será implementado na Aula 06)",
+                false);
     }
 
     public static void acessarConta() {
         Telas.cabecalhoLogin();
 
         String numeroConta = Telas.lerTexto("Número da conta");
-        String senha       = Telas.lerTexto("Senha");
+        String senha = Telas.lerTexto("Senha");
 
         // Login completo será implementado na Aula 06, com a CentralBancaria.
         Telas.mensagem("Login recebido para a conta " + numeroConta + " (em breve).", false);
     }
 }
-
-   
-
-    
-

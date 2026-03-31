@@ -6,7 +6,7 @@ public class Telas {
     // Menu
     private static final Scanner scanner = new Scanner(System.in);
 
-    private static void limparTela() {
+    public static void limparTela() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
@@ -34,7 +34,7 @@ public class Telas {
         System.out.print("Escolha uma opção: ");
     }
 
-    private void mensagem(String nomeCliente, double saldo) {
+    public void mensagem(String nomeCliente, double saldo) {
         limparTela();
         System.out.println("===================");
         System.out.println("Olá, " + nomeCliente + ("! Bem-vindo ao One Pierce Bank."));
@@ -49,7 +49,7 @@ public class Telas {
     }
     
 
-    static void cabecalhoLogin() {
+    public static void cabecalhoLogin() {
         limparTela();
         System.out.println("===================");
         System.out.println("Login");
@@ -59,7 +59,7 @@ public class Telas {
     public static void cabecalhoCadastro() {
         limparTela();
         System.out.println("===================");
-        System.out.println("Login/Cadastro");
+        System.out.println("Criação de Conta");
         System.out.println("===================");
     }
 

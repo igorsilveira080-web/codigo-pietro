@@ -1,27 +1,24 @@
-import java.util.Scanner;
-
 public class Main {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         int opcao;
 
         do {
             Telas.menuPrincipal();
-            opcao = Integer.parseInt(scanner.nextLine().trim());
-            
+            opcao = Telas.lerOpcao();
+
             switch (opcao) {
                 case 1:
-                    Telas.opcao("Opção 1 selecionada: Criar conta");
+                    Controlador.criarConta();
                     break;
                 case 2:
-                    Telas.opcao("Opção 2 selecionada: Acessar conta ");
+                    Controlador.acessarConta();
                     break;
                 case 3:
-                    System.out.println("Encerrando...Falo amigão!");
+                    Telas.mensagem("Encerrando. Até logo!", false);
                     break;
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
-
+                    Telas.mensagem("Opção inválida. Tente novamente.", true);
             }
 
         } while (opcao != 3);
