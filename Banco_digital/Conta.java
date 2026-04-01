@@ -1,29 +1,40 @@
 //Classe pai 
 
-    //passa a ser a classe base com saldo 
+//passa a ser a classe base com saldo 
 public class Conta {
-   public String donoConta;
-    public double saldo;
-    
+  public String NumeroConta;
+  public double saldo;
 
-    public Conta(String donoConta, double saldoInicial) {
-        this.donoConta = donoConta;
-        this.saldo = saldoInicial;
+  public double getSaldo() {
+    return this.saldo;
+  }
+
+  public String getNumeroConta() {
+    return this.NumeroConta;
+  }
+
+  // Operaçoes
+  public boolean depositar(double valor) {
+
+    if (valor <= 0) {
+      return false;
+
     }
+    this.saldo += valor;
+    return true;
 
-    public void depositar(double valor) {
-        this.saldo += valor;
-        System.out.println("Depósito de R$" + valor + " realizado.");
+  }
+
+  public boolean sacar(double valor) {
+    if (valor <= 0 || valor > this.saldo) {
+      return false;
     }
+    this.saldo -= valor;
+    return true;
+  }
 
-    public void sacar(double valor) {
-        if (valor <= saldo) {
-            this.saldo -= valor;
-            System.out.println("Saque de R$" + valor + " realizado.");
-        } else {
-            System.out.println("Saldo insuficiente!");
-        }
+  public String descricao() {
+    return "Conta";
+  }
 
-   }
- 
 }

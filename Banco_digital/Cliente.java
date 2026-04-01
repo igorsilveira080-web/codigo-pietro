@@ -68,7 +68,7 @@ public class Cliente {
         if (senha == null || senha.trim().length() < 6) {
             return false;
         }
-        this.senha = senha.trim();
+        this.Senha = senha.trim();
         return true;
     }
 
