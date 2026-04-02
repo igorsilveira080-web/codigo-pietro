@@ -13,18 +13,18 @@ public class Transacao {
   public Transacao(String tipo, double valor, String data) {
     this.tipo = tipo;
     this.valor = valor;
-    this.data = LocalDate.parse(data, Formatador);
-
-  }
-
-  // Getters
-  public String getTipo() {
-    return tipo;
-  }
-
-  public double getValor() {
-    return valor;
-  }
+    this.data = LocalDate.parse(data, Formatador);                                         
+                                         
+  }                                         
+                                         
+  // Getters                                         
+  public String getTipo() {                                         
+    return tipo;                                         
+  }                                         
+                                         
+  public double getValor() {                                         
+    return valor;                                         
+  }                                         
 
   public String getData() {
     return data.format(Formatador);

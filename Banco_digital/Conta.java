@@ -4,6 +4,7 @@
 public class Conta {
   public String NumeroConta;
   public double saldo;
+  public Historico historico;
 
   public double getSaldo() {
     return this.saldo;
