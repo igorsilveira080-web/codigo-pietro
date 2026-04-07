@@ -74,9 +74,48 @@ public class Controlador {
         Telas.cabecalhoLogin();
 
         String numeroConta = Telas.lerTexto("Número da conta");
-        String senha = Telas.lerTexto("Senha");
+        int tentativas = 0;
+        while (tentativas < 3) {
+            String senha = Telas.lerTexto("Senha");
+            Cliente cliente = new Cliente();
+            String status = central.login(numeroConta, senha, cliente);
 
-        // Login completo será implementado na Aula 06, com a CentralBancaria.
-        Telas.mensagem("Login recebido para a conta " + numeroConta + " (em breve).", false);
+            switch (status) {
+                case "OK":
+                    Telas.mensagem("Login bem-sucedido! Bem-vindo, " + cliente.getNome() + "!", false);
+                    return;
+
+                case "Conta INEXISTENTE":
+                    Telas.mensagem("Número de conta não encontrado. Tente novamente.", true);
+                    return;
+
+                case "BLOQUEADA":
+                    Telas.mensagem("Conta bloqueada devido a múltiplas tentativas de login falhadas.", true);
+                    return;
+
+                case "SENHA INCORRETA":
+                    tentativas++;
+                    if (tentativas < 3) {
+                        Telas.mensagem("Senha incorreta. Tente novamente." + tentativas + "/3", false);
+                    }
+                    break;
+                default:
+                    Telas.mensagem("Erro de comunicação. Tente novamente mais tarde.", true);
+                    return;
+
+            }
+        }
     }
+
+    public static void menuConta() {
+        String opcao = Telas.lerTexto("Menu da Conta:");
+        switch (opcao) {
+            case "1" -> Telas.mensagem("Saque da conta em breve", false);
+
+            case "2" -> Telas.mensagem("Deposito da conta em breve", false);
+            case "3" -> Telas.mensagem("Saindo...", false);
+            default -> Telas.mensagem("Opção inválida.", true);
+        }
+    }
+
 }

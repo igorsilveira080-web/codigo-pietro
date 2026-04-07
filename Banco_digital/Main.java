@@ -17,6 +17,10 @@ public class Main {
                 case 3:
                     Telas.mensagem("Encerrando. Até logo!", false);
                     break;
+                case 4:
+                 Controlador.menuConta();
+                    break;
+                
                 default:
                     Telas.mensagem("Opção inválida. Tente novamente.", true);
             }
