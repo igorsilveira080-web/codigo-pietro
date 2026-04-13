@@ -481,4 +481,17 @@ public class CentralBancaria {
         }
         return extrato;
     }
+    public boolean atualizarSaldo(Cliente cliente) {
+        try {
+            Registro r = buscarPorConta(cliente.getNumeroConta());
+            if (r==null) return false;
+            cliente.setSaldo(r.saldo);
+            return true;
+
+            
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

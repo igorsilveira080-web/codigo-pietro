@@ -16,18 +16,10 @@ public class Cliente {
     private LocalDate dataNascimento;
     private String numeroConta;
     private String senha;
-    /*
-     * Composição: Cliente TEM UMA Conta (introduzida na Aula 04).
-     * O objeto é ContaCorrente, mas a variável é do tipo Conta.
-     */
-    private Conta conta = new ContaCorrente();
-    /*
-     * Composição: Cliente TEM UM Historico (Aula 05).
-     * O histórico vive dentro do cliente e registra cada operação.
-     */
-    private Historico historico = new Historico();
+    private double saldo;
     private boolean bloqueada;
     private int tentativasFalhas;
+    private Conta conta;
 
     // GETTERS
 
@@ -46,18 +38,8 @@ public class Cliente {
     public String getNumeroConta() {
         return numeroConta;
     }
-
-    /* Delega para Conta: o saldo mora em Conta, não mais diretamente em Cliente. */
     public double getSaldo() {
-        return conta.getSaldo();
-    }
-
-    public Conta getConta() {
-        return conta;
-    }
-
-    public Historico getHistorico() {
-        return historico;
+        return saldo;
     }
 
     public boolean isBloqueada() {
@@ -126,8 +108,8 @@ public class Cliente {
     }
 
     /* Atualiza o saldo (atribuído pela CentralBancaria após operações). */
-    public double setSaldo(double saldo) {
-        return conta.getSaldo();
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     /* Permite bloquear ou desbloquear a conta manualmente. */
